@@ -1,0 +1,176 @@
+/* ===== LAYOUT ===== */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #0f3340;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: #9fd1b5;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: 0.2s;
+}
+
+.sidebar a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* ===== CONTEÚDO ===== */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+  height: 60px;
+  background: #0f3340;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+}
+
+.logo {
+  height: 35px;
+}
+
+/* ===== MAIN ===== */
+.main {
+  flex: 1;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== FUNDO ===== */
+.main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: url("/img/background.jpg") no-repeat center;
+  background-size: cover;
+
+  z-index: 0;
+}
+
+/* ===== OVERLAY ESCURO ===== */
+.main::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  z-index: 1;
+}
+
+/* ===== CONTEÚDO NA FRENTE ===== */
+.main > * {
+  position: relative;
+  z-index: 2;
+}
+
+.main * {
+  z-index: 2;
+}
+
+/* ===== TOPO ===== */
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* ===== SEARCH (NORMAL AGORA) ===== */
+.search {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 200px;
+  color: #000;
+  background: #fff;
+}
+
+/* ===== BOX ===== */
+.box {
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+tr {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+tr:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* ===== MENSAGEM ===== */
+.mensagem {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== INPUTS (TEXTO PRETO + LINHA AZUL) ===== */
+input,
+textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #9fd1b5;
+  outline: none;
+  padding: 8px;
+  width: 100%;
+  color: #000;
+}
+
+input:focus,
+textarea:focus {
+  border-bottom: 2px solid #1e88e5;
+}

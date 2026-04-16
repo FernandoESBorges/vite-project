@@ -1,0 +1,38 @@
+/* RESET LIMPO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 🔥 GARANTE OCUPAR A TELA TODA */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+}
+
+/* BODY */
+body {
+  font-family: system-ui, sans-serif;
+  background: #f4f6f8;
+  overflow-x: hidden; /* 🔥 evita espacinho lateral */
+}
+
+/* ROOT */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* 🔥 GARANTE QUE NADA CRIE BORDA */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* 🔥 REMOVE QUALQUER ESPAÇO INVISÍVEL */
+div, section, main {
+  margin: 0;
+  padding: 0;
+}

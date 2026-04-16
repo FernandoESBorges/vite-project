@@ -1,0 +1,159 @@
+/* RESET GLOBAL */
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fundo da página */
+.login-page {
+    font-family: "Poppins", sans-serif;
+
+    background-image: url("/img/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Overlay escuro */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* Caixa principal */
+.login-wrapper {
+    display: flex;
+    width: 900px;
+    max-width: 95%;
+    height: 450px;
+
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Lado esquerdo */
+.login-left {
+    flex: 1;
+    background-color: #0b6240;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-logo {
+    width: 80%;
+    max-width: 300px;
+}
+
+/* Lado direito */
+.login-right {
+    flex: 1;
+    padding: 40px;
+
+    background-color: #0f3340;
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-right h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Links */
+.form-options {
+    margin: 10px 0 20px;
+}
+
+.form-options a {
+    color: #9fd1b5;
+    text-decoration: none;
+}
+
+.form-options a:hover {
+    text-decoration: underline;
+}
+
+/* Botão */
+.btn-login {
+    width: 100%;
+    background-color: #0b6240;
+    color: white;
+
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #0c7a4f;
+}
+
+/* Erro */
+.erro-msg {
+    color: #ffb3b3;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Rodapé */
+.login-footer {
+    margin-top: 30px;
+    font-size: 0.85rem;
+}
+
+.logo-unincor {
+    max-width: 120px;
+    margin-top: 10px;
+}

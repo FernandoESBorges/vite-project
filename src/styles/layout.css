@@ -1,0 +1,121 @@
+/* ===== CONTAINER ===== */
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 220px;
+  background: #0f3340;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER (MENU EM CIMA) ===== */
+.sidebar-header {
+  text-align: center;
+  color: white;
+  padding: 20px 0;
+}
+
+/* ===== MENU (CENTRO) ===== */
+.sidebar-menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centraliza vertical */
+  gap: 12px;
+  padding: 0 10px;
+}
+
+/* ===== ITENS DO MENU ===== */
+.menu-item {
+  display: block;
+  background: rgba(255,255,255,0.05);
+  color: #9fd1b5;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.menu-item:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ===== ÁREA DIREITA ===== */
+.layout-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent; /* 🔥 remove fundo cinza */
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+  height: 60px;
+  background: #0f3340;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+}
+
+/* ===== USER + LOGO ===== */
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== NOME ===== */
+.user-name {
+  font-size: 14px;
+}
+
+/* ===== DROPDOWN ===== */
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+/* MENU DROPDOWN */
+.dropdown-menu {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  background: white;
+  color: black;
+  border-radius: 6px;
+  padding: 8px 0;
+  min-width: 100px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+/* ITEM DROPDOWN */
+.dropdown-menu div {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dropdown-menu div:hover {
+  background: #f1f1f1;
+}
+
+/* ===== LOGO ===== */
+.logo {
+  height: 35px;
+}
+
+/* ===== CONTEÚDO ===== */
+.page-content {
+  flex: 1;
+  padding: 0; /* 🔥 remove a borda branca */
+  margin: 0;
+  background: transparent;
+}
