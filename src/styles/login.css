@@ -103,6 +103,7 @@ html, body, #root {
 }
 
 .input-group input {
+    background-color: rgb(190, 183, 183); /* Cinza claro na caixa de texto do login */
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -111,15 +112,18 @@ html, body, #root {
 /* Links */
 .form-options {
     margin: 10px 0 20px;
-}
+    
+}    
 
 .form-options a {
-    color: #9fd1b5;
+    color: #aa9fd1;
     text-decoration: none;
+    
 }
 
 .form-options a:hover {
     text-decoration: underline;
+    
 }
 
 /* Botão */

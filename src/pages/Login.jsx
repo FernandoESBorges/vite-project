@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 
 export default function Login() {
+
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [erro, setErro] = useState("");
 
-    const handleLogin = (e) => {
+    const navigate = useNavigate();
+
+    const handleLogin = async (e) => {
         e.preventDefault();
 
         if (!email || !senha) {
@@ -14,11 +18,32 @@ export default function Login() {
             return;
         }
 
-        // SIMULAÇÃO (igual Thymeleaf faria com backend)
-        if (email === "admin" && senha === "123") {
-            alert("Login realizado!");
-            setErro("");
-        } else {
+        try {
+            const response = await fetch("http://localhost:8080/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    senha: senha
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Login inválido");
+            }
+
+            const usuario = await response.json();
+
+            // 🔥 SALVA USUÁRIO (IMPORTANTE)
+            localStorage.setItem("usuario", JSON.stringify(usuario));
+
+            // 🔥 REDIRECIONA
+            navigate("/dashboard");
+
+        } catch (erro) {
+          console.error(erro); //usa o erro do catch para debugar
             setErro("Usuário ou senha inválidos");
         }
     };
@@ -29,22 +54,19 @@ export default function Login() {
 
             <div className="login-wrapper">
 
-                {/* LADO ESQUERDO */}
                 <div className="login-left">
                     <img src="/img/logo.png" alt="Logo" className="login-logo" />
                 </div>
 
-                {/* LADO DIREITO */}
                 <div className="login-right">
                     <h2>Acesso ao Sistema</h2>
 
                     <form onSubmit={handleLogin} className="login-form">
 
                         <div className="input-group">
-                            <label>Usuário</label>
+                            <label>Email</label>
                             <input
                                 type="text"
-                                placeholder="Digite seu usuário"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -54,14 +76,9 @@ export default function Login() {
                             <label>Senha</label>
                             <input
                                 type="password"
-                                placeholder="Digite sua senha"
                                 value={senha}
                                 onChange={(e) => setSenha(e.target.value)}
                             />
-                        </div>
-
-                        <div className="form-options">
-                            
                         </div>
 
                         <button type="submit" className="btn-login">
@@ -70,11 +87,6 @@ export default function Login() {
 
                         {erro && <p className="erro-msg">{erro}</p>}
                     </form>
-
-                    <div className="login-footer">
-                        <p>Plataforma Educacional</p>
-                        <img src="/img/logo2.png" alt="Logo" className="logo-unincor" />
-                    </div>
                 </div>
             </div>
         </div>
