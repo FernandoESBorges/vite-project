@@ -8,15 +8,21 @@ export default function CriarChamado() {
   const navigate = useNavigate();
 
   const usuario = {
-    nome: "Fernando",
-    email: "fernando@email.com"
+    nome: JSON.parse(localStorage.getItem("usuario"))?.nome || "Usuário",
+    email: JSON.parse(localStorage.getItem("usuario"))?.email || "email@exemplo.com"
   };
 
   const [setor, setSetor] = useState("");
   const [descricao, setDescricao] = useState("");
   const [open, setOpen] = useState(false);
 
-  function enviar(e) {
+  const mapSetor = {
+    "TI": 1,
+    "RH": 2,
+    "Financeiro": 3
+  };
+
+  async function enviar(e) {
     e.preventDefault();
 
     if (!setor || !descricao) {
@@ -24,8 +30,28 @@ export default function CriarChamado() {
       return;
     }
 
-    alert("Chamado enviado!");
-    navigate("/dashboard");
+    try {
+      const response = await fetch("http://localhost:8080/api/chamados", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          titulo: `Chamado - ${setor}`,
+          descricao: descricao,
+          setorOrigemId: 1,
+          setorDestinoId: mapSetor[setor]
+        })
+      });
+
+      if (!response.ok) throw new Error();
+
+      alert("Chamado enviado com sucesso!");
+      navigate("/dashboard");
+
+    } catch {
+      alert("Erro ao enviar chamado");
+    }
   }
 
   function selecionar(valor) {
@@ -35,11 +61,9 @@ export default function CriarChamado() {
 
   return (
     <Layout>
-
       <div className="criar-container">
 
         <div className="criar-card">
-
           <h2>Criar Chamado</h2>
 
           <div className="criar-info">
@@ -51,7 +75,6 @@ export default function CriarChamado() {
 
             <label>Setor</label>
 
-            {/* 🔥 SELECT CUSTOM */}
             <div className="custom-select" onClick={() => setOpen(!open)}>
               {setor || "Selecione"}
 
@@ -77,11 +100,8 @@ export default function CriarChamado() {
             </button>
 
           </form>
-
         </div>
-
       </div>
-
     </Layout>
   );
 }

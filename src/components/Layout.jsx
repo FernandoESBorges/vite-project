@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/layout.css";
 
 export default function Layout({ children }) {
 
   const [open, setOpen] = useState(false);
-  const usuario = "Fernando";
+  const usuario = JSON.parse(localStorage.getItem("usuario"))?.nome || "Usuário";
 
   function sair() {
     alert("Saindo...");
@@ -14,32 +15,23 @@ export default function Layout({ children }) {
   return (
     <div className="layout-container">
 
-      {/* SIDEBAR */}
       <aside className="sidebar">
-
         <div className="sidebar-header">
           <h2>Menu</h2>
         </div>
 
         <div className="sidebar-menu">
-          <a href="/dashboard" className="menu-item">📥 Caixa de Entrada</a>
-          <a href="#" className="menu-item">📌 Chamados</a>
-          <a href="/criar-chamado" className="menu-item">➕ Abrir Chamado</a>
+          <Link to="/dashboard" className="menu-item">📥 Caixa de Entrada</Link>
+          <Link to="/criar-chamado" className="menu-item">➕ Abrir Chamado</Link>
         </div>
-
       </aside>
 
-      {/* DIREITA */}
       <div className="layout-content">
 
-        {/* TOPBAR */}
         <header className="topbar">
-
           <div></div>
 
           <div className="topbar-right">
-
-            {/* LOGO + USER JUNTOS */}
             <div className="user-box">
 
               <span className="user-name">{usuario}</span>
@@ -57,12 +49,9 @@ export default function Layout({ children }) {
               <img src="/img/logo2.png" className="logo" />
 
             </div>
-
           </div>
-
         </header>
 
-        {/* CONTEÚDO */}
         <main className="page-content">
           {children}
         </main>
